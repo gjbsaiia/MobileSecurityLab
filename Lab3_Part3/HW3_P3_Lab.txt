@@ -1,0 +1,25 @@
+PackageName: "com.example.cs493.homework"
+
+Permissions:    GET_ACCOUNTS
+                READ_PROFILE
+                READ_CONTACTS
+                CALL_PHONE
+                SEND_SMS
+                ACCESS_FINE_LOCATION
+
+Cracking:
+                In manifest, look where LoginActivity is filtered:
+                        "android.intent.action.MAIN"
+                Go to com/example/cs493/homework look in LoginActivity.java. Strip attemptLogin method for password generating code
+
+        Make script:
+                int x = 1;
+                String user = "Griffin@CS493";
+                for (int i = 0; i < user.length(); i++){
+                        x = (user.charAt(i) * x) % 12345678;
+                }
+                String password = Integer.valueOf(x).toString();
+                print(password);
+        
+        Console:
+                "3656448"
